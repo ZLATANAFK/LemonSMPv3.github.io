@@ -2,51 +2,94 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<title>Lemon SMP • Official</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lemon SMP • Official Platform</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
 
-/* OPENING */
+/* =========================
+   RESET & BASE
+========================= */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Inter,sans-serif;
-  background:#f6f7f9;
+  font-family:Inter, sans-serif;
+  background:#f4f6f8;
   color:#111827;
-  animation:fadeIn 1.2s ease forwards;
+  overflow-x:hidden;
 }
 
-@keyframes fadeIn{
-  from{opacity:0}
-  to{opacity:1}
+/* =========================
+   OPENING SCREEN
+========================= */
+#opening{
+  position:fixed;
+  inset:0;
+  background:white;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:9999;
+  animation:openingFade 1.6s ease forwards;
+  animation-delay:2.8s;
 }
 
-/* HEADER */
+@keyframes openingFade{
+  to{opacity:0;visibility:hidden}
+}
+
+.opening-box{
+  text-align:center;
+  animation:openingZoom 2.5s ease forwards;
+}
+
+@keyframes openingZoom{
+  0%{opacity:0;transform:scale(.85)}
+  100%{opacity:1;transform:scale(1)}
+}
+
+.opening-title{
+  font-size:3rem;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.opening-sub{
+  margin-top:10px;
+  color:#6b7280;
+}
+
+/* =========================
+   HEADER / HERO
+========================= */
 header{
   background:white;
   border-bottom:1px solid #e5e7eb;
-  padding:80px 20px;
+  padding:90px 20px;
   text-align:center;
-  animation:slideDown 1.2s ease forwards;
 }
 
-@keyframes slideDown{
-  from{opacity:0;transform:translateY(-30px)}
-  to{opacity:1;transform:translateY(0)}
-}
-
-/* GLITCH TITLE */
-.glitch{
-  font-size:2.6rem;
-  font-weight:700;
+.hero-title{
+  font-size:3rem;
+  font-weight:800;
   position:relative;
   display:inline-block;
 }
 
-.glitch::before,
-.glitch::after{
+/* GLITCH EFFECT */
+.hero-title::before,
+.hero-title::after{
   content:attr(data-text);
   position:absolute;
   left:0;
@@ -57,104 +100,130 @@ header{
   overflow:hidden;
 }
 
-.glitch::before{animation:glitchTop 3s infinite linear}
-.glitch::after{animation:glitchBottom 2.5s infinite linear}
+.hero-title::before{
+  animation:glitch1 3s infinite linear;
+}
 
-@keyframes glitchTop{
-  0%{clip-path:inset(0 0 90% 0)}
-  50%{clip-path:inset(0 0 40% 0);transform:translate(-1px,-1px)}
+.hero-title::after{
+  animation:glitch2 2.3s infinite linear;
+}
+
+@keyframes glitch1{
+  0%{clip-path:inset(0 0 80% 0)}
+  50%{clip-path:inset(0 0 30% 0);transform:translate(-2px,-2px)}
   100%{clip-path:inset(0 0 70% 0)}
 }
-@keyframes glitchBottom{
+
+@keyframes glitch2{
   0%{clip-path:inset(70% 0 0 0)}
-  50%{clip-path:inset(40% 0 0 0);transform:translate(1px,1px)}
+  50%{clip-path:inset(30% 0 0 0);transform:translate(2px,2px)}
   100%{clip-path:inset(80% 0 0 0)}
 }
 
-.subtitle{margin-top:15px;color:#6b7280}
+.hero-sub{
+  margin-top:18px;
+  font-size:1.1rem;
+  color:#6b7280;
+}
 
-/* BADGES */
-.badges{margin-top:30px}
+/* =========================
+   BADGES
+========================= */
+.badges{
+  margin-top:35px;
+}
+
 .badge{
   display:inline-block;
-  margin:6px;
-  padding:10px 18px;
+  margin:8px;
+  padding:12px 22px;
   background:#22c55e;
   color:white;
-  border-radius:8px;
-  font-weight:600;
-  animation:popIn .8s ease forwards;
+  border-radius:10px;
+  font-weight:700;
 }
 
-@keyframes popIn{
-  from{opacity:0;transform:scale(.9)}
-  to{opacity:1;transform:scale(1)}
-}
-
-/* CONTAINER */
+/* =========================
+   MAIN CONTAINER
+========================= */
 .container{
-  max-width:1100px;
+  max-width:1200px;
   margin:auto;
-  padding:70px 20px;
+  padding:80px 20px;
 }
 
-/* SECTIONS */
+/* =========================
+   SECTIONS
+========================= */
 .section{
-  margin-bottom:80px;
-  animation:fadeUp 1s ease forwards;
+  margin-bottom:120px;
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
 }
 
-@keyframes fadeUp{
-  from{opacity:0;transform:translateY(30px)}
-  to{opacity:1;transform:translateY(0)}
+.section.visible{
+  opacity:1;
+  transform:translateY(0);
 }
 
 .section h2{
-  font-size:1.5rem;
-  margin-bottom:25px;
-  border-left:4px solid #22c55e;
-  padding-left:12px;
+  font-size:2rem;
+  font-weight:800;
+  margin-bottom:35px;
+  border-left:6px solid #22c55e;
+  padding-left:16px;
 }
 
-/* GRID */
+/* =========================
+   GRID & CARDS
+========================= */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
-/* CARD */
 .card{
   background:white;
-  border-radius:14px;
-  padding:25px;
-  box-shadow:0 15px 30px rgba(0,0,0,.06);
-  transition:.3s;
+  border-radius:18px;
+  padding:30px;
+  box-shadow:0 25px 60px rgba(0,0,0,.08);
+  transition:.35s ease;
 }
 
 .card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 20px 40px rgba(0,0,0,.08);
+  transform:translateY(-10px) scale(1.01);
+  box-shadow:0 35px 80px rgba(0,0,0,.12);
 }
 
-/* FORM */
-form input, form textarea{
+.card h3{
+  font-size:1.3rem;
+  margin-bottom:12px;
+}
+
+/* =========================
+   FORMS
+========================= */
+form input,
+form textarea{
   width:100%;
-  margin-top:10px;
-  padding:10px;
+  margin-top:12px;
+  padding:14px;
+  border-radius:10px;
   border:1px solid #d1d5db;
-  border-radius:6px;
+  font-size:.95rem;
 }
 
 form button{
-  margin-top:15px;
-  padding:12px;
+  margin-top:18px;
+  padding:14px;
   width:100%;
-  background:#22c55e;
   border:none;
+  border-radius:10px;
+  background:#22c55e;
   color:white;
-  border-radius:6px;
-  font-weight:600;
+  font-weight:700;
   cursor:pointer;
   transition:.2s;
 }
@@ -163,30 +232,43 @@ form button:hover{
   background:#16a34a;
 }
 
-/* STAFF */
-.staff-role{
-  font-weight:600;
+/* =========================
+   STAFF
+========================= */
+.role{
   color:#22c55e;
+  font-weight:700;
   margin-bottom:6px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer{
   background:white;
   border-top:1px solid #e5e7eb;
-  padding:25px;
+  padding:40px;
   text-align:center;
   color:#6b7280;
-  animation:fadeUp 1.2s ease forwards;
 }
+
 </style>
 </head>
 
 <body>
 
+<!-- OPENING -->
+<div id="opening">
+  <div class="opening-box">
+    <div class="opening-title">Lemon SMP</div>
+    <div class="opening-sub">Loading experience...</div>
+  </div>
+</div>
+
+<!-- HERO -->
 <header>
-  <div class="glitch" data-text="Lemon SMP">Lemon SMP</div>
-  <div class="subtitle">Server Minecraft Survival Multiplayer</div>
+  <div class="hero-title" data-text="Lemon SMP">Lemon SMP</div>
+  <div class="hero-sub">Minecraft Survival Multiplayer Platform</div>
 
   <div class="badges">
     <span class="badge">IP: lemonsmp.mnt.li</span>
@@ -196,8 +278,9 @@ footer{
 
 <div class="container">
 
+<!-- FORUM -->
 <div class="section">
-  <h2>Forum</h2>
+  <h2>Forum & Aplicații</h2>
   <div class="grid">
 
     <div class="card">
@@ -205,7 +288,8 @@ footer{
       <form>
         <input placeholder="Nume Minecraft">
         <textarea rows="4" placeholder="Motivul banului"></textarea>
-        <button>Trimite</button>
+        <textarea rows="4" placeholder="De ce meriți unban"></textarea>
+        <button>Trimite cererea</button>
       </form>
     </div>
 
@@ -213,7 +297,8 @@ footer{
       <h3>Aplicație Staff</h3>
       <form>
         <input placeholder="Nume Minecraft">
-        <input placeholder="Vârsta">
+        <input placeholder="Vârstă">
+        <textarea rows="4" placeholder="Experiență"></textarea>
         <button>Aplică</button>
       </form>
     </div>
@@ -221,7 +306,8 @@ footer{
     <div class="card">
       <h3>Aplicație Media</h3>
       <form>
-        <input placeholder="YouTube / TikTok">
+        <input placeholder="Nume Minecraft">
+        <input placeholder="YouTube / TikTok / Twitch">
         <button>Aplică</button>
       </form>
     </div>
@@ -229,14 +315,30 @@ footer{
   </div>
 </div>
 
+<!-- STAFF -->
 <div class="section">
   <h2>Echipa Staff</h2>
   <div class="grid">
 
-    <div class="card"><div class="staff-role">Fondator</div>Mant0ni0<br>Kira</div>
-    <div class="card"><div class="staff-role">Co-Fondator</div>qxerror</div>
-    <div class="card"><div class="staff-role">Tehnic</div>Samir</div>
-    <div class="card"><div class="staff-role">Admin</div>Deyyu</div>
+    <div class="card">
+      <div class="role">Fondator</div>
+      Mant0ni0<br>Kira
+    </div>
+
+    <div class="card">
+      <div class="role">Co-Fondator</div>
+      qxerror
+    </div>
+
+    <div class="card">
+      <div class="role">Tehnic</div>
+      Samir
+    </div>
+
+    <div class="card">
+      <div class="role">Admin</div>
+      Deyyu
+    </div>
 
   </div>
 </div>
@@ -244,8 +346,29 @@ footer{
 </div>
 
 <footer>
-  © 2026 Lemon SMP • Website oficial
+  © 2026 Lemon SMP • Advanced Web Platform
 </footer>
+
+<script>
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+const sections = document.querySelectorAll('.section');
+
+const reveal = () => {
+  sections.forEach(sec=>{
+    const top = sec.getBoundingClientRect().top;
+    if(top < window.innerHeight - 120){
+      sec.classList.add('visible');
+    }
+  });
+};
+
+window.addEventListener('scroll', reveal);
+window.addEventListener('load', reveal);
+
+</script>
 
 </body>
 </html>
