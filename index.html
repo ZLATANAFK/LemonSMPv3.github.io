@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Lemon SMP • Official</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Inter,sans-serif;
+  background:#f6f7f9;
+  color:#1f2937;
+}
+
+/* HEADER */
+header{
+  background:white;
+  border-bottom:1px solid #e5e7eb;
+  padding:60px 20px;
+  text-align:center;
+}
+
+header h1{
+  font-size:2.4rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+header p{
+  color:#6b7280;
+}
+
+.badges{
+  margin-top:25px;
+}
+
+.badge{
+  display:inline-block;
+  margin:6px;
+  padding:10px 18px;
+  background:#22c55e;
+  color:white;
+  border-radius:8px;
+  font-weight:600;
+}
+
+/* CONTAINER */
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:60px 20px;
+}
+
+.section{
+  margin-bottom:70px;
+}
+
+.section h2{
+  font-size:1.5rem;
+  margin-bottom:25px;
+  border-left:4px solid #22c55e;
+  padding-left:12px;
+}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:20px;
+}
+
+/* CARD */
+.card{
+  background:white;
+  border-radius:12px;
+  padding:25px;
+  box-shadow:0 10px 25px rgba(0,0,0,.05);
+}
+
+.card h3{
+  margin-bottom:10px;
+  font-size:1.1rem;
+}
+
+/* FORM */
+form input, form textarea{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border:1px solid #d1d5db;
+  border-radius:6px;
+  font-family:Inter,sans-serif;
+}
+
+form button{
+  margin-top:15px;
+  padding:12px;
+  width:100%;
+  background:#22c55e;
+  border:none;
+  color:white;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* STAFF */
+.staff-role{
+  font-weight:600;
+  color:#22c55e;
+  margin-bottom:6px;
+}
+
+/* FOOTER */
+footer{
+  background:white;
+  border-top:1px solid #e5e7eb;
+  padding:25px;
+  text-align:center;
+  color:#6b7280;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Lemon SMP</h1>
+  <p>Server Minecraft Survival Multiplayer</p>
+
+  <div class="badges">
+    <span class="badge">IP: lemonsmp.mnt.li</span>
+    <span class="badge">Versiune: 1.20.x</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- FORUM -->
+<div class="section">
+  <h2>Forum</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Cerere Unban</h3>
+      <form>
+        <input placeholder="Nume Minecraft">
+        <textarea rows="4" placeholder="Motivul banului"></textarea>
+        <textarea rows="4" placeholder="De ce consideri că meriți unban"></textarea>
+        <button>Trimite cererea</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Aplicație Staff</h3>
+      <form>
+        <input placeholder="Nume Minecraft">
+        <input placeholder="Vârsta">
+        <textarea rows="4" placeholder="Experiență anterioară"></textarea>
+        <textarea rows="4" placeholder="De ce vrei să intri în staff"></textarea>
+        <button>Aplică</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Aplicație Media</h3>
+      <form>
+        <input placeholder="Nume Minecraft">
+        <input placeholder="YouTube / TikTok / Twitch">
+        <textarea rows="4" placeholder="De ce vrei Media"></textarea>
+        <button>Aplică</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<!-- STAFF -->
+<div class="section">
+  <h2>Echipa Staff</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="staff-role">Fondator</div>
+      Mant0ni0<br>Kira
+    </div>
+
+    <div class="card">
+      <div class="staff-role">Co-Fondator</div>
+      qxerror
+    </div>
+
+    <div class="card">
+      <div class="staff-role">Tehnic</div>
+      Samir
+    </div>
+
+    <div class="card">
+      <div class="staff-role">Admin</div>
+      Deyyu
+    </div>
+
+  </div>
+</div>
+
+</div>
+
+<footer>
+  © 2026 Lemon SMP • Website oficial
+</footer>
+
+</body>
+</html>
