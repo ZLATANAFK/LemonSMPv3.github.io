@@ -9,18 +9,32 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
+
+/* OPENING */
 body{
   font-family:Inter,sans-serif;
   background:#f6f7f9;
   color:#111827;
+  animation:fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 
 /* HEADER */
 header{
   background:white;
   border-bottom:1px solid #e5e7eb;
-  padding:70px 20px;
+  padding:80px 20px;
   text-align:center;
+  animation:slideDown 1.2s ease forwards;
+}
+
+@keyframes slideDown{
+  from{opacity:0;transform:translateY(-30px)}
+  to{opacity:1;transform:translateY(0)}
 }
 
 /* GLITCH TITLE */
@@ -38,41 +52,26 @@ header{
   left:0;
   top:0;
   width:100%;
-  overflow:hidden;
   color:#22c55e;
   background:white;
+  overflow:hidden;
 }
 
-.glitch::before{
-  animation:glitchTop 2.5s infinite linear alternate-reverse;
-}
-
-.glitch::after{
-  animation:glitchBottom 2s infinite linear alternate-reverse;
-}
+.glitch::before{animation:glitchTop 3s infinite linear}
+.glitch::after{animation:glitchBottom 2.5s infinite linear}
 
 @keyframes glitchTop{
-  0%{clip-path:inset(0 0 90% 0);transform:translate(-1px,-1px)}
-  20%{clip-path:inset(0 0 40% 0)}
-  40%{clip-path:inset(0 0 60% 0);transform:translate(1px,1px)}
-  60%{clip-path:inset(0 0 30% 0)}
-  80%{clip-path:inset(0 0 80% 0)}
-  100%{clip-path:inset(0 0 50% 0)}
+  0%{clip-path:inset(0 0 90% 0)}
+  50%{clip-path:inset(0 0 40% 0);transform:translate(-1px,-1px)}
+  100%{clip-path:inset(0 0 70% 0)}
 }
-
 @keyframes glitchBottom{
-  0%{clip-path:inset(60% 0 0 0);transform:translate(1px,1px)}
-  20%{clip-path:inset(30% 0 0 0)}
-  40%{clip-path:inset(80% 0 0 0);transform:translate(-1px,-1px)}
-  60%{clip-path:inset(40% 0 0 0)}
-  80%{clip-path:inset(70% 0 0 0)}
-  100%{clip-path:inset(20% 0 0 0)}
+  0%{clip-path:inset(70% 0 0 0)}
+  50%{clip-path:inset(40% 0 0 0);transform:translate(1px,1px)}
+  100%{clip-path:inset(80% 0 0 0)}
 }
 
-.subtitle{
-  margin-top:15px;
-  color:#6b7280;
-}
+.subtitle{margin-top:15px;color:#6b7280}
 
 /* BADGES */
 .badges{margin-top:30px}
@@ -84,16 +83,32 @@ header{
   color:white;
   border-radius:8px;
   font-weight:600;
+  animation:popIn .8s ease forwards;
+}
+
+@keyframes popIn{
+  from{opacity:0;transform:scale(.9)}
+  to{opacity:1;transform:scale(1)}
 }
 
 /* CONTAINER */
 .container{
   max-width:1100px;
   margin:auto;
-  padding:60px 20px;
+  padding:70px 20px;
 }
 
-.section{margin-bottom:70px}
+/* SECTIONS */
+.section{
+  margin-bottom:80px;
+  animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
 .section h2{
   font-size:1.5rem;
   margin-bottom:25px;
@@ -101,18 +116,25 @@ header{
   padding-left:12px;
 }
 
-/* GRID & CARD */
+/* GRID */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
   gap:20px;
 }
 
+/* CARD */
 .card{
   background:white;
-  border-radius:12px;
+  border-radius:14px;
   padding:25px;
-  box-shadow:0 10px 25px rgba(0,0,0,.05);
+  box-shadow:0 15px 30px rgba(0,0,0,.06);
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,.08);
 }
 
 /* FORM */
@@ -133,6 +155,12 @@ form button{
   color:white;
   border-radius:6px;
   font-weight:600;
+  cursor:pointer;
+  transition:.2s;
+}
+
+form button:hover{
+  background:#16a34a;
 }
 
 /* STAFF */
@@ -149,6 +177,7 @@ footer{
   padding:25px;
   text-align:center;
   color:#6b7280;
+  animation:fadeUp 1.2s ease forwards;
 }
 </style>
 </head>
@@ -176,7 +205,6 @@ footer{
       <form>
         <input placeholder="Nume Minecraft">
         <textarea rows="4" placeholder="Motivul banului"></textarea>
-        <textarea rows="4" placeholder="De ce meriți unban"></textarea>
         <button>Trimite</button>
       </form>
     </div>
@@ -186,7 +214,6 @@ footer{
       <form>
         <input placeholder="Nume Minecraft">
         <input placeholder="Vârsta">
-        <textarea rows="4" placeholder="Experiență"></textarea>
         <button>Aplică</button>
       </form>
     </div>
@@ -194,7 +221,6 @@ footer{
     <div class="card">
       <h3>Aplicație Media</h3>
       <form>
-        <input placeholder="Nume Minecraft">
         <input placeholder="YouTube / TikTok">
         <button>Aplică</button>
       </form>
@@ -207,25 +233,10 @@ footer{
   <h2>Echipa Staff</h2>
   <div class="grid">
 
-    <div class="card">
-      <div class="staff-role">Fondator</div>
-      Mant0ni0<br>Kira
-    </div>
-
-    <div class="card">
-      <div class="staff-role">Co-Fondator</div>
-      qxerror
-    </div>
-
-    <div class="card">
-      <div class="staff-role">Tehnic</div>
-      Samir
-    </div>
-
-    <div class="card">
-      <div class="staff-role">Admin</div>
-      Deyyu
-    </div>
+    <div class="card"><div class="staff-role">Fondator</div>Mant0ni0<br>Kira</div>
+    <div class="card"><div class="staff-role">Co-Fondator</div>qxerror</div>
+    <div class="card"><div class="staff-role">Tehnic</div>Samir</div>
+    <div class="card"><div class="staff-role">Admin</div>Deyyu</div>
 
   </div>
 </div>
