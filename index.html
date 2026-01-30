@@ -2,25 +2,22 @@
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
+<title>Lemon SMP • Official Website</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lemon SMP • Official Platform</title>
 
-<!-- GOOGLE FONT -->
+<!-- ===================== -->
+<!--        FONTS          -->
+<!-- ===================== -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
-
-/* =========================
-   RESET & BASE
-========================= */
+/* =========================================================
+   RESET + BASE
+   ========================================================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
 }
 
 body{
@@ -30,66 +27,63 @@ body{
   overflow-x:hidden;
 }
 
-/* =========================
-   OPENING SCREEN
-========================= */
-#opening{
+/* =========================================================
+   LOADING SCREEN
+   ========================================================= */
+#loader{
   position:fixed;
   inset:0;
-  background:white;
+  background:#ffffff;
   display:flex;
   align-items:center;
   justify-content:center;
   z-index:9999;
-  animation:openingFade 1.6s ease forwards;
-  animation-delay:2.8s;
+  transition:opacity .6s ease;
 }
 
-@keyframes openingFade{
-  to{opacity:0;visibility:hidden}
-}
-
-.opening-box{
+.loader-box{
   text-align:center;
-  animation:openingZoom 2.5s ease forwards;
 }
 
-@keyframes openingZoom{
-  0%{opacity:0;transform:scale(.85)}
-  100%{opacity:1;transform:scale(1)}
+.loader-bar{
+  width:220px;
+  height:6px;
+  background:#e5e7eb;
+  overflow:hidden;
+  border-radius:4px;
+  margin-top:20px;
 }
 
-.opening-title{
-  font-size:3rem;
-  font-weight:800;
-  letter-spacing:-1px;
+.loader-progress{
+  height:100%;
+  width:0%;
+  background:#22c55e;
+  animation:load 2.5s forwards;
 }
 
-.opening-sub{
-  margin-top:10px;
-  color:#6b7280;
+@keyframes load{
+  to{width:100%;}
 }
 
-/* =========================
+/* =========================================================
    HEADER / HERO
-========================= */
+   ========================================================= */
 header{
   background:white;
-  border-bottom:1px solid #e5e7eb;
-  padding:90px 20px;
+  padding:90px 20px 80px;
   text-align:center;
+  border-bottom:1px solid #e5e7eb;
 }
 
-.hero-title{
+.glitch{
   font-size:3rem;
   font-weight:800;
   position:relative;
   display:inline-block;
 }
 
-/* GLITCH EFFECT */
-.hero-title::before,
-.hero-title::after{
+.glitch::before,
+.glitch::after{
   content:attr(data-text);
   position:absolute;
   left:0;
@@ -100,63 +94,57 @@ header{
   overflow:hidden;
 }
 
-.hero-title::before{
-  animation:glitch1 3s infinite linear;
+.glitch::before{
+  animation:glitchTop 3s infinite linear;
 }
 
-.hero-title::after{
-  animation:glitch2 2.3s infinite linear;
+.glitch::after{
+  animation:glitchBottom 2.5s infinite linear;
 }
 
-@keyframes glitch1{
-  0%{clip-path:inset(0 0 80% 0)}
-  50%{clip-path:inset(0 0 30% 0);transform:translate(-2px,-2px)}
-  100%{clip-path:inset(0 0 70% 0)}
+@keyframes glitchTop{
+  0%{clip-path:inset(0 0 90% 0);}
+  50%{clip-path:inset(0 0 40% 0);transform:translate(-1px,-1px);}
+  100%{clip-path:inset(0 0 70% 0);}
 }
 
-@keyframes glitch2{
-  0%{clip-path:inset(70% 0 0 0)}
-  50%{clip-path:inset(30% 0 0 0);transform:translate(2px,2px)}
-  100%{clip-path:inset(80% 0 0 0)}
+@keyframes glitchBottom{
+  0%{clip-path:inset(70% 0 0 0);}
+  50%{clip-path:inset(40% 0 0 0);transform:translate(1px,1px);}
+  100%{clip-path:inset(80% 0 0 0);}
 }
 
-.hero-sub{
-  margin-top:18px;
-  font-size:1.1rem;
+.subtitle{
+  margin-top:15px;
   color:#6b7280;
+  font-size:1.1rem;
 }
 
-/* =========================
-   BADGES
-========================= */
 .badges{
   margin-top:35px;
 }
 
 .badge{
   display:inline-block;
-  margin:8px;
+  margin:6px;
   padding:12px 22px;
   background:#22c55e;
   color:white;
   border-radius:10px;
-  font-weight:700;
+  font-weight:600;
 }
 
-/* =========================
-   MAIN CONTAINER
-========================= */
+/* =========================================================
+   LAYOUT
+   ========================================================= */
 .container{
   max-width:1200px;
   margin:auto;
   padding:80px 20px;
 }
 
-/* =========================
-   SECTIONS
-========================= */
 .section{
-  margin-bottom:120px;
+  margin-bottom:100px;
   opacity:0;
   transform:translateY(40px);
   transition:1s ease;
@@ -168,62 +156,60 @@ header{
 }
 
 .section h2{
-  font-size:2rem;
-  font-weight:800;
-  margin-bottom:35px;
-  border-left:6px solid #22c55e;
-  padding-left:16px;
+  font-size:1.7rem;
+  margin-bottom:30px;
+  border-left:5px solid #22c55e;
+  padding-left:15px;
 }
 
-/* =========================
+/* =========================================================
    GRID & CARDS
-========================= */
+   ========================================================= */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:30px;
+  gap:25px;
 }
 
 .card{
   background:white;
-  border-radius:18px;
   padding:30px;
-  box-shadow:0 25px 60px rgba(0,0,0,.08);
-  transition:.35s ease;
+  border-radius:16px;
+  box-shadow:0 20px 40px rgba(0,0,0,.06);
+  transition:.3s ease;
 }
 
 .card:hover{
-  transform:translateY(-10px) scale(1.01);
-  box-shadow:0 35px 80px rgba(0,0,0,.12);
+  transform:translateY(-8px);
+  box-shadow:0 30px 60px rgba(0,0,0,.08);
 }
 
 .card h3{
-  font-size:1.3rem;
   margin-bottom:12px;
 }
 
-/* =========================
+/* =========================================================
    FORMS
-========================= */
+   ========================================================= */
 form input,
 form textarea{
   width:100%;
+  padding:12px;
   margin-top:12px;
-  padding:14px;
-  border-radius:10px;
   border:1px solid #d1d5db;
-  font-size:.95rem;
+  border-radius:8px;
+  font-family:Inter;
 }
 
 form button{
-  margin-top:18px;
-  padding:14px;
   width:100%;
-  border:none;
-  border-radius:10px;
+  padding:14px;
+  margin-top:18px;
   background:#22c55e;
+  border:none;
+  border-radius:8px;
   color:white;
-  font-weight:700;
+  font-weight:600;
   cursor:pointer;
   transition:.2s;
 }
@@ -232,43 +218,48 @@ form button:hover{
   background:#16a34a;
 }
 
-/* =========================
+/* =========================================================
    STAFF
-========================= */
-.role{
+   ========================================================= */
+.staff-role{
   color:#22c55e;
   font-weight:700;
-  margin-bottom:6px;
+  margin-bottom:8px;
 }
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+   ========================================================= */
 footer{
   background:white;
   border-top:1px solid #e5e7eb;
-  padding:40px;
+  padding:30px;
   text-align:center;
   color:#6b7280;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- OPENING -->
-<div id="opening">
-  <div class="opening-box">
-    <div class="opening-title">Lemon SMP</div>
-    <div class="opening-sub">Loading experience...</div>
+<!-- ===================== -->
+<!-- LOADER -->
+<!-- ===================== -->
+<div id="loader">
+  <div class="loader-box">
+    <h2>Loading Lemon SMP</h2>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
   </div>
 </div>
 
-<!-- HERO -->
+<!-- ===================== -->
+<!-- HEADER -->
+<!-- ===================== -->
 <header>
-  <div class="hero-title" data-text="Lemon SMP">Lemon SMP</div>
-  <div class="hero-sub">Minecraft Survival Multiplayer Platform</div>
+  <div class="glitch" data-text="Lemon SMP">Lemon SMP</div>
+  <div class="subtitle">Minecraft Survival Multiplayer</div>
 
   <div class="badges">
     <span class="badge">IP: lemonsmp.mnt.li</span>
@@ -278,9 +269,11 @@ footer{
 
 <div class="container">
 
+<!-- ===================== -->
 <!-- FORUM -->
-<div class="section">
-  <h2>Forum & Aplicații</h2>
+<!-- ===================== -->
+<section class="section">
+  <h2>Forum</h2>
   <div class="grid">
 
     <div class="card">
@@ -297,7 +290,7 @@ footer{
       <h3>Aplicație Staff</h3>
       <form>
         <input placeholder="Nume Minecraft">
-        <input placeholder="Vârstă">
+        <input placeholder="Vârsta">
         <textarea rows="4" placeholder="Experiență"></textarea>
         <button>Aplică</button>
       </form>
@@ -307,67 +300,76 @@ footer{
       <h3>Aplicație Media</h3>
       <form>
         <input placeholder="Nume Minecraft">
-        <input placeholder="YouTube / TikTok / Twitch">
+        <input placeholder="YouTube / TikTok">
         <button>Aplică</button>
       </form>
     </div>
 
   </div>
-</div>
+</section>
 
+<!-- ===================== -->
 <!-- STAFF -->
-<div class="section">
+<!-- ===================== -->
+<section class="section">
   <h2>Echipa Staff</h2>
   <div class="grid">
 
     <div class="card">
-      <div class="role">Fondator</div>
+      <div class="staff-role">Fondator</div>
       Mant0ni0<br>Kira
     </div>
 
     <div class="card">
-      <div class="role">Co-Fondator</div>
+      <div class="staff-role">Co-Fondator</div>
       qxerror
     </div>
 
     <div class="card">
-      <div class="role">Tehnic</div>
+      <div class="staff-role">Tehnic</div>
       Samir
     </div>
 
     <div class="card">
-      <div class="role">Admin</div>
+      <div class="staff-role">Admin</div>
       Deyyu
     </div>
 
   </div>
-</div>
+</section>
 
 </div>
 
 <footer>
-  © 2026 Lemon SMP • Advanced Web Platform
+  © 2026 Lemon SMP • Website oficial
 </footer>
 
+<!-- ===================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================== -->
 <script>
+/* LOADER */
+window.addEventListener("load",()=>{
+  setTimeout(()=>{
+    document.getElementById("loader").style.opacity="0";
+    setTimeout(()=>{
+      document.getElementById("loader").style.display="none";
+    },600);
+  },2600);
+});
 
-/* =========================
-   SCROLL REVEAL
-========================= */
-const sections = document.querySelectorAll('.section');
+/* SCROLL ANIMATIONS */
+const sections=document.querySelectorAll(".section");
 
-const reveal = () => {
-  sections.forEach(sec=>{
-    const top = sec.getBoundingClientRect().top;
-    if(top < window.innerHeight - 120){
-      sec.classList.add('visible');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
     }
   });
-};
+},{threshold:0.2});
 
-window.addEventListener('scroll', reveal);
-window.addEventListener('load', reveal);
-
+sections.forEach(sec=>observer.observe(sec));
 </script>
 
 </body>
